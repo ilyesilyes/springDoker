@@ -1,0 +1,34 @@
+jwt:
+    secret: ${SECRET_CODE:secretcode}
+spring:
+    #autoconfigure:
+    #    exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+    datasource:
+        url: jdbc:mysql://localhost:3306/securecapita
+        password: ${DB_PWD_LOCAL:TO_CONFIG_IN_ENV_VARIABLE}
+        username: ${DB_USER_LOCAL:TO_CONFIG_IN_ENV_VARIABLE}
+    jpa:
+        database-platform: org.hibernate.dialect.MySQL8InnoDialect
+        generate-ddl: true
+        show-sql: true
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                globally_quoted_identifiers: true
+                format_sql: true
+                dialect: org.hibernate.dialect.MySQL8Dialect
+    sql:
+        init:
+          mode: never
+          continue-on-error: false
+
+
+server:
+    port: 8081
+    error:
+        path: /user/error
+        whitelabel:
+            enabled: false
+
+

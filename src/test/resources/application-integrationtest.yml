@@ -1,0 +1,21 @@
+jwt:
+  secret:  testsecretcode
+spring:
+  datasource:
+    url: jdbc:h2:mem:test
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        globally_quoted_identifiers: true
+        format_sql: true
+        dialect: org.hibernate.dialect.H2Dialect
+  sql:
+    init:
+      mode: always
+      continue-on-error: false
+      schema-locations: classpath:schema-h2-integrationtest.sql
