@@ -1,26 +1,19 @@
-spring:
-    #autoconfigure:
-    #    exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
-    datasource:
-        url: jdbc:mysql://prodUrl:3306/securecapita
-        password: ${DB_PWD_REMOTE}
-        username: ${DB_USER_REMOTE}
-    jpa:
-        database-platform: org.hibernate.dialect.MySQL8InnoDialect
-        generate-ddl: true
-        show-sql: true
-        hibernate:
-            ddl-auto: update
-        properties:
-            hibernate:
-                globally_quoted_identifiers: true
-                format_sql: true
-                dialect: org.hibernate.dialect.MySQL8Dialect
-    sql:
-        init:
-          mode: never
-          continue-on-error: false
+#DataBase
+MYSQL_USERNAME: root
+MYSQL_PASSWORD: root
+MYSQL_HOST: localhost
+MYSQL_PORT: 3306
+MYSQL_DATABASE: securecapita
 
-server:
-    port: 8081
+#Server config
+CONTAINER_PORT: 8084
+#ACTIVE_PROFILE: prod
+
+#JWT config
+JWT_SECRET: secretcodeprod
+
+UI_APP_URL: http://localhost:4200
+
+
+
 

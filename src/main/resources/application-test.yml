@@ -6,11 +6,11 @@ MYSQL_PORT: 3306
 MYSQL_DATABASE: securecapita
 
 #Server config
-CONTAINER_PORT: 8085
-#ACTIVE_PROFILE: dev
+CONTAINER_PORT: 8082
+#ACTIVE_PROFILE: test
 
 #JWT config
-JWT_SECRET: secretcode
+JWT_SECRET: secretcodeprod
 
 UI_APP_URL: http://localhost:4200
 
