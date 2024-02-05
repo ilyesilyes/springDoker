@@ -1,15 +1,48 @@
 services:
+  db:
+    container_name: mysqlContainer
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'securecapita'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'userpw'
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - '127.0.0.1:3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - /var/lib/mysql
+    networks:
+      network:
+        ipv4_address: 10.5.0.5
+
+
   first:
+    depends_on:
+      - db
     container_name: firstcontainer
     build:
       context: .
       args:
         CONTAINER_PORT: ${CONTAINER_PORT}
     image: first:v1
-    restart: unless-stopped
+    restart: always
     env_file:
       - ${ENV_FILE}
     expose:
       - ${CONTAINER_PORT}
     ports:
       - ${CONTAINER_PORT}:${HOST_PORT}
+    networks:
+      network:
+        ipv4_address: 10.5.0.6
+
+networks:
+  network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
+          gateway: 10.5.0.1
